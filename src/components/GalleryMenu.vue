@@ -46,6 +46,7 @@ const navigateToSlide = (index: number) => {
             <a href="#" @click="navigateToSlide(index)">
               {{ navItem }}
             </a>
+            <div class="nav__border link"></div>
           </li>
         </ul>
       </nav>
@@ -94,6 +95,24 @@ a {
     display: flex;
     gap: 1.4rem;
     list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    // Add hover on .nav__item to target .nav__border
+    &:hover .nav__border {
+      border-bottom: 2px solid white;
+    }
+  }
+
+  &__border {
+    position: absolute;
+    top: 0;
+    width: 70%;
+    height: calc(100% + 5px);
   }
 }
 img {

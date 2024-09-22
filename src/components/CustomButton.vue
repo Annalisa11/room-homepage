@@ -5,7 +5,7 @@ import ArrowIcon from '../assets/images/icon-arrow.svg'
 <template>
   <button class="button">
     <div class="label">shop now</div>
-    <ArrowIcon />
+    <ArrowIcon class="icon" />
   </button>
 </template>
 
@@ -14,16 +14,23 @@ import ArrowIcon from '../assets/images/icon-arrow.svg'
   display: flex;
   gap: 20px;
   width: fit-content;
-  padding: 0.5rem 1rem;
   align-items: center;
+  background: transparent;
+  border: none;
+  margin-top: 1rem;
 
   &:hover {
-    cursor: pointer;
+    color: grey;
+
+    .icon {
+      fill: grey;
+    }
   }
 }
 
 .label {
   text-transform: uppercase;
+  font-size: bold;
   letter-spacing: 0.5rem;
 }
 </style>

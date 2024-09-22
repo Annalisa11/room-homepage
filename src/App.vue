@@ -26,7 +26,8 @@ import CustomButton from './components/CustomButton.vue'
     </section>
 
     <img src="./assets/images/image-about-dark.jpg" id="image-one" />
-    <section class="content-two text-section">
+    <section class="content-two text-section compact">
+      <h2>About our furniture</h2>
       <p>
         Our modern furniture store provide a high level of quality. Our company has invested in
         advanced technology to ensure that every product is made as perfect and as consistent as

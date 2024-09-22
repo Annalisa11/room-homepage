@@ -12,6 +12,14 @@ h1 {
   margin-bottom: 2rem;
 }
 
+h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 1rem;
+}
+
 .arrows {
   background: black;
   color: white;
@@ -28,7 +36,11 @@ h1 {
 }
 
 .text-section {
-  padding: 2rem;
+  padding: 6rem;
+
+  &.compact {
+    padding: 3rem;
+  }
 }
 
 .content {

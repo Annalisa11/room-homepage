@@ -21,7 +21,6 @@ h2 {
 }
 
 .arrows {
-  background: black;
   color: white;
   display: flex;
   width: fit-content;
@@ -33,6 +32,11 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: black;
+
+  &:hover {
+    background-color: grey;
+  }
 }
 
 .text-section {

@@ -2,6 +2,8 @@
 import './App.scss'
 import Gallery from './components/GalleryMenu.vue'
 import CustomButton from './components/CustomButton.vue'
+import LeftChevron from './assets/images/icon-angle-left.svg'
+import RightChevron from './assets/images/icon-angle-right.svg'
 </script>
 
 <template>
@@ -19,9 +21,9 @@ import CustomButton from './components/CustomButton.vue'
         <CustomButton />
       </div>
 
-      <div class="arrows">
-        <div class="left">back</div>
-        <div class="right">next</div>
+      <div class="arrows link">
+        <div class="left"><LeftChevron /></div>
+        <div class="right"><RightChevron /></div>
       </div>
     </section>
 

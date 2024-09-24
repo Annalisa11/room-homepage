@@ -90,3 +90,27 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// Variables for breakpoints
+$breakpoint-mobile: 768px;
+
+.show-on-mobile,
+.show-on-desktop {
+  display: none;
+}
+
+// Show only on mobile
+@media (max-width: $breakpoint-mobile) {
+  .show-on-mobile {
+    display: block;
+    border: 1px solid red;
+  }
+}
+
+// Show only on desktop
+@media (min-width: ($breakpoint-mobile + 1)) {
+  .show-on-desktop {
+    display: block;
+    border: 1px solid blue;
+  }
+}

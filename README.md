@@ -93,3 +93,4 @@ This challenge is completely free. Please share it with anyone who will find it 
 **Have fun building!** 🚀
 
 https://vuejs.org/guide/built-ins/transition
+https://codepen.io/ysk2645/pen/wvBabpe

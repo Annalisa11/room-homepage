@@ -6,6 +6,7 @@ const navItems = ref<string[]>(['Home', 'Shop', 'About', 'Contact'])
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperInstance } from 'swiper'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules'
+import '../assets/base.scss'
 
 import HamburgerIcon from '../assets/images/icon-hamburger.svg'
 import CloseIcon from '../assets/images/icon-close.svg'
@@ -32,6 +33,7 @@ const onSlideChange = () => {
 const swiperRef = ref<SwiperInstance | null>(null)
 const navigateToSlide = (index: number) => {
   if (swiperRef.value) {
+    console.log('swiperRef, value, slideTo: ', swiperRef, swiperRef.value, swiperRef.value.slideTo)
     swiperRef.value.slideTo(index)
   }
 }
@@ -45,7 +47,8 @@ console.log('navOpen: ', navOpen)
 <template>
   <div class="gallery">
     <header>
-      <div id="sidemenu">
+      <!-- Mobile Menu -->
+      <div id="sidemenu" class="show-on-mobile">
         <button
           class="sidemenu__btn"
           v-on:click="navOpen = !navOpen"
@@ -54,7 +57,7 @@ console.log('navOpen: ', navOpen)
           <transition name="scale">
             <HamburgerIcon class="hamburger" v-show="!navOpen" />
           </transition>
-          <transition name="translateX">
+          <transition name="scale">
             <CloseIcon class="close" v-show="navOpen" />
           </transition>
         </button>
@@ -66,24 +69,27 @@ console.log('navOpen: ', navOpen)
                   <a href="#" @click="navigateToSlide(index)">
                     {{ navItem }}
                   </a>
-                  <div class="nav__border link"></div>
                 </li>
               </ul>
             </div>
           </nav>
         </transition>
       </div>
-      <a href="#" class="logo">room</a>
-      <!-- <nav>
-        <ul class="nav__items">
-          <li class="nav__item" v-for="(navItem, index) in navItems" :key="index">
-            <a href="#" @click="navigateToSlide(index)">
-              {{ navItem }}
-            </a>
-            <div class="nav__border link"></div>
-          </li>
-        </ul>
-      </nav> -->
+
+      <!-- Desktop Menu -->
+      <div class="show-on-desktop">
+        <a href="#" class="logo">room</a>
+        <nav>
+          <ul class="nav__items">
+            <li class="nav__item" v-for="(navItem, index) in navItems" :key="index">
+              <a href="#" @click="navigateToSlide(index)">
+                {{ navItem }}
+              </a>
+              <div class="nav__border link"></div>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <swiper
       ref="swiperRef"
@@ -106,6 +112,10 @@ console.log('navOpen: ', navOpen)
   grid-area: gallery;
   padding: 2rem;
   position: relative;
+
+  @media (max-width: 879px) {
+    height: 400px;
+  }
 }
 header {
   display: flex;
@@ -117,37 +127,38 @@ header {
   .logo {
     font-size: xx-large;
     margin-right: 1rem;
+    color: white;
   }
 }
 a {
   text-decoration: none;
 }
-// .nav {
-//   &__items {
-//     display: flex;
-//     gap: 1.4rem;
-//     list-style: none;
-//   }
+.nav {
+  &__items {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+  }
 
-//   &__item {
-//     position: relative;
-//     display: flex;
-//     justify-content: center;
-//     color: white;
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: white;
 
-//     // Add hover on .nav__item to target .nav__border
-//     &:hover .nav__border {
-//       border-bottom: 2px solid white;
-//     }
-//   }
+    // Add hover on .nav__item to target .nav__border
+    &:hover .nav__border {
+      border-bottom: 2px solid white;
+    }
+  }
 
-//   &__border {
-//     position: absolute;
-//     top: 0;
-//     width: 70%;
-//     height: calc(100% + 5px);
-//   }
-// }
+  &__border {
+    position: absolute;
+    top: 0;
+    width: 70%;
+    height: calc(100% + 5px);
+  }
+}
 img {
   height: 100%;
   width: 100%;
@@ -178,6 +189,8 @@ img {
       background-color: white;
     }
 
+    // @include show-on-mobile;
+
     &__btn {
       display: flex;
       width: 50px;
@@ -187,9 +200,14 @@ img {
       position: relative;
       z-index: 100;
       appearance: none;
-
+      position: relative;
       justify-content: center;
       align-items: center;
+
+      .hamburger,
+      .close {
+        position: absolute;
+      }
     }
 
     &__wrapper {
@@ -235,7 +253,26 @@ img {
   }
 }
 
-.translateX-enter {
+// Hamburger to Close Icon Animation
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: transform 0.2s ease;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0);
+}
+
+.scale-enter-to,
+.scale-leave-from {
+  transform: scale(1);
+}
+
+// Menu sliding in from the left animation
+
+.translateX-enter-from {
   transform: translateX(-200px);
   opacity: 0;
 }
@@ -249,20 +286,5 @@ img {
 .translateX-leave-to {
   transform: translateX(-200px);
   opacity: 0;
-}
-
-.scale-enter-from,
-.scale-leave-to {
-  width: 0;
-}
-
-.scale-enter-active,
-.scale-leave-active {
-  transition: 1s ease-in-out;
-}
-
-.scale-enter-to,
-.scale-leave-from {
-  width: 100%;
 }
 </style>

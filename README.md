@@ -29,9 +29,9 @@ Users should be able to:
   <img src="./screenshots/desktop.png" align="right"  style=" width: 48%;">
   
 </p>
-<p align="left" style="width: 30%">
-<img src="./screenshots/mobile-open-menu.png" align="right" style=" width: 48%;">
-<img src="./screenshots/mobile.png"   style=" width: 48%;">
+<p align="left" style="width: 20%">
+<img src="./screenshots/mobile-open-menu.png" align="right" style=" width: 20%;">
+<img src="./screenshots/mobile.png"   style=" width: 20%;">
 
 </p>
 <br/>

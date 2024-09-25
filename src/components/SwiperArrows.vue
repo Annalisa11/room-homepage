@@ -15,10 +15,10 @@ const { showOnMobile, navigateOneSlide } = defineProps<ComponentProps>()
 <template>
   <div :class="showOnMobile ? 'show-on-mobile' : 'show-on-desktop'">
     <div :class="['swiper-arrows', showOnMobile ? 'swiper-arrows--right-position' : '']">
-      <div class="swiper-arrows__left" @click="navigateOneSlide(false)">
+      <div class="swiper-arrows__left link" @click="navigateOneSlide(false)">
         <LeftChevron />
       </div>
-      <div class="swiper-arrows__right" @click="navigateOneSlide(true)">
+      <div class="swiper-arrows__right link" @click="navigateOneSlide(true)">
         <RightChevron />
       </div>
     </div>

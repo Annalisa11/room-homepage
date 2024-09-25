@@ -4,12 +4,12 @@ import ArrowIcon from '@assets/images/icon-arrow.svg'
 
 <template>
   <button class="button">
-    <div class="label">shop now</div>
-    <ArrowIcon class="icon" />
+    <div class="button__label">shop now</div>
+    <ArrowIcon class="button__icon" />
   </button>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import '@styles/base.scss';
 
 .button {
@@ -26,15 +26,19 @@ import ArrowIcon from '@assets/images/icon-arrow.svg'
     transform: translateX(10px);
     color: $color-dark-gray;
 
-    .icon {
+    .button__icon {
       fill: $color-dark-gray;
     }
   }
 }
 
-.label {
+.button__label {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.5rem;
+}
+
+.button__icon {
+  transition: fill 0.3s ease;
 }
 </style>

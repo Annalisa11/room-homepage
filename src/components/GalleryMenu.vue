@@ -11,10 +11,10 @@ interface GalleryMenuProps {
   navigateToSlide: (index: number) => void
   navigateOneSlide: (toTheRight: boolean) => void
 }
-// const gallerySwiperRef = ref<InstanceType<typeof GallerySwiper> | null>(null)
+
 const { onSwiper, navigateToSlide, navigateOneSlide } = defineProps<GalleryMenuProps>()
+
 const onMenuItemClick = (index: number) => {
-  console.log('gallerymenu: ', index)
   navigateToSlide(index)
 }
 </script>
@@ -26,3 +26,13 @@ const onMenuItemClick = (index: number) => {
     <SwiperArrows :navigate-one-slide="navigateOneSlide" :show-on-mobile="true" />
   </div>
 </template>
+
+<style scoped lang="scss">
+@import '@styles/base.scss';
+
+.gallery {
+  &__swiper {
+    position: relative;
+  }
+}
+</style>

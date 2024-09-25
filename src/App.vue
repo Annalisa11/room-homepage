@@ -6,17 +6,17 @@ import '@styles/base.scss'
 import SwiperArrows from '@components/SwiperArrows.vue'
 
 import { ref } from 'vue'
-import type { Swiper as SwiperInstance } from 'swiper'
+import { Swiper as SwiperInstance } from 'swiper'
 
+// Swiper reference and methods for controlling the slides
 const swiperRef = ref<SwiperInstance | null>(null)
+
 const onSwiper = (swiper: SwiperInstance) => {
   swiperRef.value = swiper
 }
 
 const navigateToSlide = (index: number) => {
-  if (swiperRef.value) {
-    swiperRef.value.slideTo(index)
-  }
+  swiperRef.value?.slideTo(index)
 }
 
 const navigateOneSlide = (toTheRight: boolean) => {
@@ -33,6 +33,7 @@ const navigateOneSlide = (toTheRight: boolean) => {
       :navigate-to-slide="navigateToSlide"
       :navigate-one-slide="navigateOneSlide"
     />
+
     <section class="content">
       <div class="text-section">
         <h1>Discover innovative ways to decorate</h1>

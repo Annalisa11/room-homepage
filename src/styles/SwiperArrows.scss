@@ -1,33 +1,29 @@
 @import '@styles/base.scss';
 
-.arrows {
+.swiper-arrows {
   color: white;
   display: flex;
   width: fit-content;
 
-  &.right-position {
+  &--right-position {
     position: absolute;
     bottom: 0;
     right: 0;
     z-index: 100;
   }
-}
 
-.left,
-.right {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: black;
-  transition: background-color 0.3s ease;
+  &__left,
+  &__right {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    transition: background-color 0.3s ease;
 
-  &.right-position {
-    z-index: inherit;
-  }
-
-  &:hover {
-    background-color: $color-very-dark-gray;
+    &:hover {
+      background-color: $color-very-dark-gray;
+    }
   }
 }

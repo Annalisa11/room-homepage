@@ -9,16 +9,16 @@ interface ComponentProps {
   navigateOneSlide: (toTheRight: boolean) => void
 }
 
-const { navigateOneSlide } = defineProps<ComponentProps>()
+const { showOnMobile, navigateOneSlide } = defineProps<ComponentProps>()
 </script>
 
 <template>
-  <div :class="showOnMobile ? 'show-on-mobile ' : 'show-on-desktop'">
-    <div :class="['arrows link', showOnMobile ? 'right-position' : '']">
-      <div class="left" @click="navigateOneSlide(false)">
+  <div :class="showOnMobile ? 'show-on-mobile' : 'show-on-desktop'">
+    <div :class="['swiper-arrows', showOnMobile ? 'swiper-arrows--right-position' : '']">
+      <div class="swiper-arrows__left" @click="navigateOneSlide(false)">
         <LeftChevron />
       </div>
-      <div class="right" @click="navigateOneSlide(true)">
+      <div class="swiper-arrows__right" @click="navigateOneSlide(true)">
         <RightChevron />
       </div>
     </div>

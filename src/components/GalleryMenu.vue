@@ -49,46 +49,51 @@ console.log('navOpen: ', navOpen)
     <header>
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="show-on-mobile">
-        <button
-          class="nav__menu-btn"
-          v-on:click="navOpen = !navOpen"
-          v-bind:class="{ 'nav__menu-btn--active': navOpen }"
-        >
-          <transition name="scale">
-            <HamburgerIcon class="nav__icon nav__icon--hamburger" v-show="!navOpen" />
+        <div class="nav__container">
+          <button
+            class="nav__menu-btn"
+            v-on:click="navOpen = !navOpen"
+            v-bind:class="{ 'nav__menu-btn--active': navOpen }"
+          >
+            <transition name="scale">
+              <HamburgerIcon class="nav__icon nav__icon--hamburger" v-show="!navOpen" />
+            </transition>
+            <transition name="scale">
+              <CloseIcon class="nav__icon nav__icon--close" v-show="navOpen" />
+            </transition>
+          </button>
+          <a href="#" class="nav__logo">room</a>
+          <transition name="translateX">
+            <nav v-show="navOpen" class="nav">
+              <div class="nav__wrapper">
+                <ul class="nav__items">
+                  <li class="nav__item" v-for="(navItem, index) in navItems" :key="index">
+                    <a href="#" @click="navigateToSlide(index)" class="nav__link">
+                      {{ navItem }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
           </transition>
-          <transition name="scale">
-            <CloseIcon class="nav__icon nav__icon--close" v-show="navOpen" />
-          </transition>
-        </button>
-        <transition name="translateX">
-          <nav v-show="navOpen" class="nav">
-            <div class="nav__wrapper">
-              <ul class="nav__items">
-                <li class="nav__item" v-for="(navItem, index) in navItems" :key="index">
-                  <a href="#" @click="navigateToSlide(index)" class="nav__link">
-                    {{ navItem }}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </transition>
+        </div>
       </div>
 
       <!-- Desktop Menu -->
       <div id="desktop-menu" class="show-on-desktop">
-        <a href="#" class="nav__logo">room</a>
-        <nav class="nav">
-          <ul class="nav__items">
-            <li class="nav__item" v-for="(navItem, index) in navItems" :key="index">
-              <a href="#" @click="navigateToSlide(index)" class="nav__link">
-                {{ navItem }}
-              </a>
-              <div class="nav__border"></div>
-            </li>
-          </ul>
-        </nav>
+        <div class="nav__container">
+          <a href="#" class="nav__logo">room</a>
+          <nav class="nav">
+            <ul class="nav__items">
+              <li class="nav__item" v-for="(navItem, index) in navItems" :key="index">
+                <a href="#" @click="navigateToSlide(index)" class="nav__link">
+                  {{ navItem }}
+                </a>
+                <div class="nav__border link"></div>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -121,18 +126,16 @@ console.log('navOpen: ', navOpen)
   }
 }
 
-header {
+.nav__container {
   display: flex;
-  align-items: baseline;
   color: white;
   position: relative;
   z-index: 100;
+}
 
-  .nav__logo {
-    font-size: xx-large;
-    margin-right: 1rem;
-    color: white;
-  }
+.nav__logo {
+  font-size: x-large;
+  color: white;
 }
 
 .swiper {
@@ -141,6 +144,14 @@ header {
 }
 
 #desktop-menu {
+  .nav__container {
+    align-items: baseline;
+  }
+
+  .nav__logo {
+    margin-right: 1rem;
+  }
+
   .nav {
     &__items {
       display: flex;
@@ -160,6 +171,7 @@ header {
 
       .nav__link {
         text-decoration: none;
+        color: white;
       }
     }
 
@@ -174,6 +186,18 @@ header {
 
 // Mobile Menu Styles
 #mobile-menu {
+  .nav__container {
+    align-items: center;
+  }
+
+  .nav__logo {
+    display: flex;
+    width: 100%;
+    margin-right: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .nav {
     background: white;
     position: fixed;
@@ -184,7 +208,7 @@ header {
 
     &__wrapper {
       background-color: white;
-      padding: 50px;
+      padding: 2rem;
       padding-left: 0;
       display: flex;
       justify-content: flex-end;
@@ -192,8 +216,8 @@ header {
 
     &__menu-btn {
       display: flex;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border: none;
       background-color: transparent;
       position: relative;
@@ -204,6 +228,7 @@ header {
 
       .nav__icon {
         position: absolute;
+        height: inherit;
       }
     }
 

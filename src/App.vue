@@ -2,14 +2,37 @@
 import '@styles/App.scss'
 import Gallery from '@components/GalleryMenu.vue'
 import CustomButton from '@components/CustomButton.vue'
-import LeftChevron from '@assets/images/icon-angle-left.svg'
-import RightChevron from '@assets/images/icon-angle-right.svg'
 import '@styles/base.scss'
+import SwiperArrows from '@components/SwiperArrows.vue'
+
+import { ref } from 'vue'
+import type { Swiper as SwiperInstance } from 'swiper'
+
+const swiperRef = ref<SwiperInstance | null>(null)
+const onSwiper = (swiper: SwiperInstance) => {
+  swiperRef.value = swiper
+}
+
+const navigateToSlide = (index: number) => {
+  if (swiperRef.value) {
+    swiperRef.value.slideTo(index)
+  }
+}
+
+const navigateOneSlide = (toTheRight: boolean) => {
+  if (swiperRef.value) {
+    toTheRight ? swiperRef.value.slideNext() : swiperRef.value.slidePrev()
+  }
+}
 </script>
 
 <template>
   <div class="grid">
-    <Gallery />
+    <Gallery
+      :on-swiper="onSwiper"
+      :navigate-to-slide="navigateToSlide"
+      :navigate-one-slide="navigateOneSlide"
+    />
     <section class="content">
       <div class="text-section">
         <h1>Discover innovative ways to decorate</h1>
@@ -22,12 +45,7 @@ import '@styles/base.scss'
         <CustomButton />
       </div>
 
-      <div class="show-on-desktop">
-        <div class="arrows link">
-          <div class="left"><LeftChevron /></div>
-          <div class="right"><RightChevron /></div>
-        </div>
-      </div>
+      <SwiperArrows :navigate-one-slide="navigateOneSlide" :show-on-mobile="false" />
     </section>
 
     <img src="@assets/images/image-about-dark.jpg" id="image-one" />

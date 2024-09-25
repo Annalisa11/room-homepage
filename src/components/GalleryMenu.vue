@@ -2,9 +2,9 @@
 import SwiperArrows from '@components/SwiperArrows.vue'
 import NavigationMenu from '@components/NavigationMenu.vue'
 import GallerySwiper from '@components/GallerySwiper.vue'
+import { Swiper as SwiperInstance } from 'swiper'
 import '@styles/base.scss'
 import '@styles/GalleryMenu.scss'
-import type { Swiper as SwiperInstance } from 'swiper'
 
 interface GalleryMenuProps {
   onSwiper: (swiper: SwiperInstance) => void

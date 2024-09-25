@@ -21,12 +21,13 @@
   justify-content: center;
   align-items: center;
   background: black;
+  transition: background-color 0.3s ease;
 
   &.right-position {
     z-index: inherit;
   }
 
   &:hover {
-    background-color: grey;
+    background-color: $color-very-dark-gray;
   }
 }

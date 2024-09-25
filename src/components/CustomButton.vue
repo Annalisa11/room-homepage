@@ -10,6 +10,8 @@ import ArrowIcon from '@assets/images/icon-arrow.svg'
 </template>
 
 <style lang="scss" scoped>
+@import '@styles/base.scss';
+
 .button {
   display: flex;
   gap: 20px;
@@ -18,19 +20,21 @@ import ArrowIcon from '@assets/images/icon-arrow.svg'
   background: transparent;
   border: none;
   margin-top: 1rem;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: grey;
+    transform: translateX(10px);
+    color: $color-dark-gray;
 
     .icon {
-      fill: grey;
+      fill: $color-dark-gray;
     }
   }
 }
 
 .label {
   text-transform: uppercase;
-  font-size: bold;
+  font-weight: bold;
   letter-spacing: 0.5rem;
 }
 </style>

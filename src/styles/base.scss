@@ -36,20 +36,6 @@
   --section-gap: 160px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
 *,
 *::before,
 *::after {
@@ -94,20 +80,33 @@ body {
 // Variables for breakpoints
 $breakpoint-mobile: 768px;
 
+// Media Queries
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: ($breakpoint-mobile + 1)) {
+    @content;
+  }
+}
+
 .show-on-mobile,
 .show-on-desktop {
   display: none;
 }
 
 // Show only on mobile
-@media (max-width: $breakpoint-mobile) {
+@include mobile {
   .show-on-mobile {
     display: block;
   }
 }
 
 // Show only on desktop
-@media (min-width: ($breakpoint-mobile + 1)) {
+@include desktop {
   .show-on-desktop {
     display: block;
   }
@@ -122,10 +121,6 @@ img {
 a {
   text-decoration: none;
 }
-
-// Layout
-$mobile-width: 375px;
-$desktop-width: 1440px;
 
 // Colors
 $color-dark-gray: hsl(0, 0%, 63%);
@@ -151,17 +146,4 @@ $font-weight-bold: 700;
   font-family: $font-family;
   font-weight: $weight;
   color: $color-black;
-}
-
-// Media Queries
-@mixin mobile {
-  @media (max-width: $mobile-width) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: $desktop-width) {
-    @content;
-  }
 }

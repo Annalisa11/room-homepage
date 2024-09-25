@@ -2,6 +2,7 @@
 import LeftChevron from '@assets/images/icon-angle-left.svg'
 import RightChevron from '@assets/images/icon-angle-right.svg'
 import '@styles/base.scss'
+import '@styles/SwiperArrows.scss'
 
 interface ComponentProps {
   showOnMobile: boolean
@@ -23,36 +24,3 @@ const { navigateOneSlide } = defineProps<ComponentProps>()
     </div>
   </div>
 </template>
-
-<style scoped lang="scss">
-.arrows {
-  color: white;
-  display: flex;
-  width: fit-content;
-
-  &.right-position {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-  }
-}
-
-.left,
-.right {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: black;
-
-  &.right-position {
-    z-index: inherit;
-  }
-
-  &:hover {
-    background-color: grey;
-  }
-}
-</style>

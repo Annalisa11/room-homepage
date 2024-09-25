@@ -2,7 +2,8 @@
 import SwiperArrows from '@components/SwiperArrows.vue'
 import NavigationMenu from '@components/NavigationMenu.vue'
 import GallerySwiper from '@components/GallerySwiper.vue'
-import { ref } from 'vue'
+import '@styles/base.scss'
+import '@styles/GalleryMenu.scss'
 import type { Swiper as SwiperInstance } from 'swiper'
 
 interface GalleryMenuProps {
@@ -25,18 +26,3 @@ const onMenuItemClick = (index: number) => {
     <SwiperArrows :navigate-one-slide="navigateOneSlide" :show-on-mobile="true" />
   </div>
 </template>
-
-<style lang="scss">
-.gallery {
-  background-image: url('../assets/images/desktop-image-hero-1.jpg');
-  background-size: cover;
-  grid-area: gallery;
-  padding: 2rem;
-  position: relative;
-
-  @media (max-width: 879px) {
-    height: 400px;
-    padding: 0;
-  }
-}
-</style>

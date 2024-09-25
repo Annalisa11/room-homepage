@@ -1,0 +1,14 @@
+@import '@styles/base.scss';
+
+.gallery {
+  background-image: url('../assets/images/desktop-image-hero-1.jpg');
+  background-size: cover;
+  grid-area: gallery;
+  padding: 2rem;
+  position: relative;
+
+  @include mobile {
+    height: 400px;
+    padding: 0;
+  }
+}

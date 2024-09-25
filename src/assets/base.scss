@@ -103,7 +103,6 @@ $breakpoint-mobile: 768px;
 @media (max-width: $breakpoint-mobile) {
   .show-on-mobile {
     display: block;
-    border: 1px solid red;
   }
 }
 
@@ -111,7 +110,6 @@ $breakpoint-mobile: 768px;
 @media (min-width: ($breakpoint-mobile + 1)) {
   .show-on-desktop {
     display: block;
-    border: 1px solid blue;
   }
 }
 

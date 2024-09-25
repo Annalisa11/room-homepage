@@ -7,6 +7,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperInstance } from 'swiper'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules'
 import '../assets/base.scss'
+import LeftChevron from '../assets/images/icon-angle-left.svg'
+import RightChevron from '../assets/images/icon-angle-right.svg'
 
 import HamburgerIcon from '../assets/images/icon-hamburger.svg'
 import CloseIcon from '../assets/images/icon-close.svg'
@@ -99,17 +101,22 @@ console.log('navOpen: ', navOpen)
 
     <!-- Swiper Gallery -->
     <swiper
-      ref="swiperRef"
       :modules="modules"
       :slides-per-view="1"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
-      :autoplay="{ delay: 5000 }"
+      :autoplay="{ delay: 10000, disableOnInteraction: false }"
     >
       <swiper-slide v-for="image in images" :key="image">
         <img :src="`./images/${image}`" alt="Gallery Image" class="gallery__image" />
       </swiper-slide>
     </swiper>
+    <div class="show-on-mobile">
+      <div class="arrows link">
+        <div class="left"><LeftChevron /></div>
+        <div class="right"><RightChevron /></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -123,6 +130,7 @@ console.log('navOpen: ', navOpen)
 
   @media (max-width: 879px) {
     height: 400px;
+    padding: 0;
   }
 }
 
@@ -188,6 +196,7 @@ console.log('navOpen: ', navOpen)
 #mobile-menu {
   .nav__container {
     align-items: center;
+    padding: 2rem;
   }
 
   .nav__logo {
@@ -200,7 +209,7 @@ console.log('navOpen: ', navOpen)
 
   .nav {
     background: white;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -293,5 +302,30 @@ console.log('navOpen: ', navOpen)
 .translateX-leave-to {
   transform: translateX(-200px);
   opacity: 0;
+}
+
+.arrows {
+  color: white;
+  display: flex;
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.left,
+.right {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  z-index: inherit;
+
+  &:hover {
+    background-color: grey;
+  }
 }
 </style>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import './App.scss'
-import Gallery from './components/GalleryMenu.vue'
-import CustomButton from './components/CustomButton.vue'
-import LeftChevron from './assets/images/icon-angle-left.svg'
-import RightChevron from './assets/images/icon-angle-right.svg'
-import './assets/base.scss'
+import '@styles/App.scss'
+import Gallery from '@components/GalleryMenu.vue'
+import CustomButton from '@components/CustomButton.vue'
+import LeftChevron from '@assets/images/icon-angle-left.svg'
+import RightChevron from '@assets/images/icon-angle-right.svg'
+import '@styles/base.scss'
 </script>
 
 <template>
@@ -30,7 +30,7 @@ import './assets/base.scss'
       </div>
     </section>
 
-    <img src="./assets/images/image-about-dark.jpg" id="image-one" />
+    <img src="@assets/images/image-about-dark.jpg" id="image-one" />
     <section class="content-two text-section compact">
       <h2>About our furniture</h2>
       <p>
@@ -41,6 +41,6 @@ import './assets/base.scss'
       </p>
     </section>
 
-    <img src="./assets/images/image-about-light.jpg" id="image-two" />
+    <img src="@assets/images/image-about-light.jpg" id="image-two" />
   </div>
 </template>

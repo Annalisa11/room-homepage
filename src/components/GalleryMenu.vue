@@ -6,12 +6,12 @@ const navItems = ref<string[]>(['Home', 'Shop', 'About', 'Contact'])
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperInstance } from 'swiper'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules'
-import '../assets/base.scss'
-import LeftChevron from '../assets/images/icon-angle-left.svg'
-import RightChevron from '../assets/images/icon-angle-right.svg'
+import '@styles/base.scss'
+import LeftChevron from '@assets/images/icon-angle-left.svg'
+import RightChevron from '@assets/images/icon-angle-right.svg'
 
-import HamburgerIcon from '../assets/images/icon-hamburger.svg'
-import CloseIcon from '../assets/images/icon-close.svg'
+import HamburgerIcon from '@assets/images/icon-hamburger.svg'
+import CloseIcon from '@assets/images/icon-close.svg'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -122,7 +122,7 @@ console.log('navOpen: ', navOpen)
 
 <style scoped lang="scss">
 .gallery {
-  background-image: url('../assets/images/desktop-image-hero-1.jpg');
+  background-image: url('.@assets/images/desktop-image-hero-1.jpg');
   background-size: cover;
   grid-area: gallery;
   padding: 2rem;

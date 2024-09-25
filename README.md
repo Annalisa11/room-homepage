@@ -30,8 +30,8 @@ Users should be able to:
   
 </p>
 <p align="left" style="width: 30%">
-<img src="./screenshots/mobile-open-menu.png" align="right" style=" width: 50%;">
-<img src="./screenshots/mobile.png"   style=" width: 50%;">
+<img src="./screenshots/mobile-open-menu.png" align="right" style=" width: 48%;">
+<img src="./screenshots/mobile.png"   style=" width: 48%;">
 
 </p>
 <br/>
